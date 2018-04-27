@@ -7,7 +7,7 @@ FOPPR data operate &amp; plot online by PyQt5,matplotlib,pandas programing with 
 # Setup
 ```command
 cd FOPPRplot
-pip install -r requirement.txt`
+pip install -r requirement.txt
 ```
 
 # Usage
