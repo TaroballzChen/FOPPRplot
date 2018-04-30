@@ -67,6 +67,11 @@ class window(QtWidgets.QWidget,plot_window):
         NIdirLabel = QtWidgets.QLabel("NI directory path")
         self.chooseNIfolder = QtWidgets.QPushButton("...")
 
+    ### Sample Name input
+
+        self.SampleName_input = QtWidgets.QLineEdit()
+        SampleNameLabel = QtWidgets.QLabel("Sample Name")
+
         if os.path.exists(self.NIdir) == False:
             self.NIdir_input.clear()
 
@@ -74,6 +79,8 @@ class window(QtWidgets.QWidget,plot_window):
         box.addWidget(NIdirLabel)
         box.addWidget(self.NIdir_input)
         box.addWidget(self.chooseNIfolder)
+        box.addWidget(SampleNameLabel)
+        box.addWidget(self.SampleName_input)
 
         self.chooseNIfolder.clicked.connect(browse)  #self.chooseNIDirectory
 
