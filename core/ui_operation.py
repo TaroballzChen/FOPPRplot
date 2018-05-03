@@ -19,7 +19,7 @@ class window_op(window):
     """
 
     def init_UI(self):
-        self.setGeometry(100, 100, 950, 900)
+        self.setGeometry(100, 100, 980, 980)
 
         UI_layout = QtWidgets.QVBoxLayout()
 
@@ -27,7 +27,8 @@ class window_op(window):
         UI_layout.addLayout(self.Conc_block( plot = self.RecordTime_WriteData,
                                              add = self.add_conc_to_combo,
                                              delete=self.remove_conc_from_combo,
-                                             blank = self.record_blank,))
+                                             blank = self.record_blank,
+                                             deleteData=self.remove_plot_data,))
         UI_layout.addLayout(self.Status_Console())
         UI_layout.addLayout(self.matplotlib_block())
 
@@ -92,8 +93,18 @@ class window_op(window):
         self.Conclist.append(current_conc)
         self.conc_combo.removeItem(index)
 
+        self.data_combo.addItem(str(current_conc))
+
         if self.conc_combo.currentText() == '':
             self.WriteData_button.setEnabled(False)
+
+        self.data_remove_button.setEnabled(True)
+
+    def remove_plot_data(self):
+        pass
+
+
+
 
         """
             Choose Directory of NI Data folder Method

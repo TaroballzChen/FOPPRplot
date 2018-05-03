@@ -63,17 +63,17 @@ class plot_window():
 
     def get_LOD(self,blankstdev,slope,intercept):
         index = ((3*blankstdev) - intercept) / slope
-        LOD_for_mM  = (10 ** index) / 150   # IgG Molecular Weight
+        LOD_for_M  = (10 ** index) / 150   # IgG Molecular Weight
         LOD_for_gmL = 10 ** index
-        return LOD_for_mM,LOD_for_gmL
+        return LOD_for_M,LOD_for_gmL
 
 
-    def table(self,equation,plot_sample,intercept,slope,Pearsons_r,r_square_value,LOD_for_mM,LOD_for_gmL):
+    def table(self,equation,plot_sample,intercept,slope,Pearsons_r,r_square_value,LOD_for_M,LOD_for_gmL):
         # col_labels = ['']
         row_labels = ['Equation','Plot','Intercept','Slope',"Pearson's r","R-square","LOD(mM)","LOD(g/mL)"]
         table_vals = [[equation],[plot_sample],
                       ["%.4f"%intercept],["%.4f"%slope],["%.4f"%Pearsons_r],["%.4f"%r_square_value],
-                      ["%.3E (mM)"%LOD_for_mM],["%.3E (g/mL)"%LOD_for_gmL],]
+                      ["%.3E (mM)"%LOD_for_M],["%.3E (g/mL)"%LOD_for_gmL],]
         fig_table = plt.table(cellText = table_vals,colWidths = [0.2]*1,
                               rowLabels = row_labels, colLabels = None,
                               loc='lower right')

@@ -25,3 +25,7 @@ pyinstaller main.py --paths=C:\...\FOPPRplot\module --paths=C:\...\FOPPRplot\cor
 > * OS : Windows 7 64bit
 > * Python : 3.5.4 32bit
 > * Pyinstaller : v3.3.1
+
+# Update
+* 2018.5.3 Add new function of removing selected point from graph
+(notice: only removing point from graph but plot data still alive)

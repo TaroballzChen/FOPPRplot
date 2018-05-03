@@ -11,7 +11,7 @@ class window(QtWidgets.QWidget,plot_window):
         Record Concentration & Time Block
     """
 
-    def Conc_block(self,plot,add,delete,blank):
+    def Conc_block(self,plot,add,delete,blank,deleteData):
         self.conc_input = QtWidgets.QLineEdit()
         self.conc_input.setFixedWidth(75)
         concLabel = QtWidgets.QLabel("conc.")
@@ -21,9 +21,9 @@ class window(QtWidgets.QWidget,plot_window):
         self.conc_combo.setFixedWidth(75)
         conclistLabel = QtWidgets.QLabel("ConcList")
         self.conc_remove_button = QtWidgets.QPushButton("delete")
-        self.conc_remove_button.setStyleSheet("background-color:red")
 
         self.RecordTime = QtWidgets.QLineEdit()
+        self.RecordTime.setFixedWidth(60)
         self.RecordTime.setReadOnly(True)
         TimeRecordLabel = QtWidgets.QLabel("Recorded Time")
 
@@ -35,6 +35,14 @@ class window(QtWidgets.QWidget,plot_window):
         self.WriteData_button.setEnabled(False)
 
         self.Blank_button = QtWidgets.QPushButton("blank")
+
+        self.data_combo = QtWidgets.QComboBox()
+        self.data_combo.setFixedWidth(75)
+        datalistLabel = QtWidgets.QLabel("Recorded Conc.")
+        self.data_remove_button = QtWidgets.QPushButton("delete")
+        self.data_remove_button.setEnabled(False)
+        self.data_remove_button.setStyleSheet("background-color:red")
+
 
         box = QtWidgets.QHBoxLayout()
         box.addWidget(NumpointLabel)
@@ -50,10 +58,18 @@ class window(QtWidgets.QWidget,plot_window):
         box.addWidget(self.Blank_button)
         box.addWidget(self.WriteData_button)
 
+
+        # Recorded Data delete
+        box.addWidget(datalistLabel)
+        box.addWidget(self.data_combo)
+        box.addWidget(self.data_remove_button)
+
+
         self.WriteData_button.clicked.connect(plot)      #self.RecordTime_WriteData
         self.Blank_button.clicked.connect(blank)         #self.record_blank
         self.concinput_add_button.clicked.connect(add)   #self.add_conc_to_combo
         self.conc_remove_button.clicked.connect(delete)  #self.remove_conc_from_combo
+        self.data_remove_button.clicked.connect(deleteData)
 
         return box
 

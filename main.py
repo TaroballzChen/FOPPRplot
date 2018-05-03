@@ -39,8 +39,7 @@ class Main(window_op):
         y_point = self.calc.normalize(self.SignalMeanData)
         self.NormalizeData.append(y_point)
 
-
-
+        # plot
         logconc = self.plot(self.Conclist,self.NormalizeData,self.SampleName_input.text(),self.blank_stdev)
         self.io.plotDataWrite(self.NIDATA,logconc,self.NormalizeData)
         self.WriteDatathread.join()
@@ -73,6 +72,21 @@ class Main(window_op):
         self.Console.appendPlainText("blankmean Data write : %s with time %s"%(blankMean,Time))
         self.RecordTime.setText(str(Time))
         self.WriteDatathread.join()
+
+    def remove_plot_data(self):
+        super(Main, self).remove_plot_data()
+        remove_index = self.Conclist.index(eval(self.data_combo.currentText()))
+
+        remove_conc_data = self.Conclist.pop(remove_index)
+        remove_data = self.NormalizeData.pop(remove_index)
+        self.data_combo.removeItem(self.data_combo.findText(self.data_combo.currentText()))
+        self.Console.appendPlainText("plot data remove conc %s with data %s"%(remove_conc_data,remove_data))
+
+        if self.data_combo.currentText() == '':
+            self.data_remove_button.setEnabled(False)
+            
+        self.plot(self.Conclist, self.NormalizeData, self.SampleName_input.text(), self.blank_stdev)
+
 
 
 if __name__ == '__main__':
