@@ -101,10 +101,8 @@ class window_op(window):
         self.data_remove_button.setEnabled(True)
 
     def remove_plot_data(self):
-        pass
-
-
-
+        if self.data_combo.currentText() == '':
+            self.data_remove_button.setEnabled(False)
 
         """
             Choose Directory of NI Data folder Method

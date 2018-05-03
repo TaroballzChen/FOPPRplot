@@ -44,7 +44,6 @@ class Main(window_op):
         self.io.plotDataWrite(self.NIDATA,logconc,self.NormalizeData)
         self.WriteDatathread.join()
 
-
     def record_blank(self):
         super(Main, self).record_blank()
         if self.NIDATA == '':
@@ -74,20 +73,14 @@ class Main(window_op):
         self.WriteDatathread.join()
 
     def remove_plot_data(self):
-        super(Main, self).remove_plot_data()
         remove_index = self.Conclist.index(eval(self.data_combo.currentText()))
-
         remove_conc_data = self.Conclist.pop(remove_index)
         remove_data = self.NormalizeData.pop(remove_index)
         self.data_combo.removeItem(self.data_combo.findText(self.data_combo.currentText()))
         self.Console.appendPlainText("plot data remove conc %s with data %s"%(remove_conc_data,remove_data))
 
-        if self.data_combo.currentText() == '':
-            self.data_remove_button.setEnabled(False)
-            
+        super(Main, self).remove_plot_data()
         self.plot(self.Conclist, self.NormalizeData, self.SampleName_input.text(), self.blank_stdev)
-
-
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
