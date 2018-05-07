@@ -21,7 +21,7 @@ Maybe you want to execute FOPPRplot program with only one execution file. You ca
 pyinstaller main.py --paths=C:\...\FOPPRplot\module --paths=C:\...\FOPPRplot\core --paths=C:\...\AppData\Local\Programs\Python\Python35-32\Lib\site-packages\PyQt5\Qt\bin --paths=C:\...\AppData\Local\Programs\Python\Python35-32\Lib\site-packages\PyQt5\Qt\plugins --hidden-import scipy._lib.messagestream --paths=C:\...\AppData\Local\Programs\Python\Python35-32\Lib\site-packages\scipy\extra-dll --hidden-import=pandas._libs.tslibs.timedeltas -F -w
 ```
 *  replace `...` to your file path in real
-*  my environment of packing:
+*  my environment for packing:
 > * OS : Windows 7 64bit
 > * Python : 3.5.4 32bit
 > * Pyinstaller : v3.3.1
