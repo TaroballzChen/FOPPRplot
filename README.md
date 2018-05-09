@@ -28,7 +28,6 @@ pyinstaller main.py --paths=C:\...\FOPPRplot\module --paths=C:\...\FOPPRplot\cor
 
 # Update
 * 2018.5.3 Add new function of removing selected point from graph
-
-(notice: only removing point from graph but plot data still alive)
+> * (notice: only removing point from graph but plot data still alive)
 
 * 2018.5.9 Add new function of input Sample M.W. and caculating LOD(M) by Sample M.W. that you gave
