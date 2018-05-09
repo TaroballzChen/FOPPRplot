@@ -83,7 +83,7 @@ class Main(window_op):
         self.Console.appendPlainText("plot data remove conc %s with data %s"%(remove_conc_data,remove_data))
 
         super(Main, self).remove_plot_data()
-        self.plot(self.Conclist, self.NormalizeData, self.SampleName_input.text(), self.blank_stdev)
+        self.plot(self.Conclist, self.NormalizeData, self.SampleName_input.text(), self.blank_stdev,self.SampleMW)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
