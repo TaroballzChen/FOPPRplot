@@ -83,6 +83,17 @@ class window_op(window):
         if self.conc_combo.currentText() == '':
             return
 
+        try :
+            self.SampleMW = float(self.SampleMW_input.text())
+            if self.SampleMW <= 0.0:
+                self.Console.appendPlainText("input correct Sample M.W. value")
+                self.SampleMW = None
+                return
+        except ValueError:
+            self.Console.appendPlainText("input correct Sample M.W. value")
+            self.SampleMW = None
+            return
+
         current_conc = self.conc_combo.currentText()
         index = self.conc_combo.findText(current_conc)
 
@@ -99,6 +110,9 @@ class window_op(window):
             self.WriteData_button.setEnabled(False)
 
         self.data_remove_button.setEnabled(True)
+
+
+
 
     def remove_plot_data(self):
         if self.data_combo.currentText() == '':

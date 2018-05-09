@@ -38,11 +38,11 @@ class window(QtWidgets.QWidget,plot_window):
 
         self.data_combo = QtWidgets.QComboBox()
         self.data_combo.setFixedWidth(75)
+
         datalistLabel = QtWidgets.QLabel("Recorded Conc.")
         self.data_remove_button = QtWidgets.QPushButton("delete")
         self.data_remove_button.setEnabled(False)
         self.data_remove_button.setStyleSheet("background-color:red")
-
 
         box = QtWidgets.QHBoxLayout()
         box.addWidget(NumpointLabel)
@@ -91,12 +91,26 @@ class window(QtWidgets.QWidget,plot_window):
         if os.path.exists(self.NIdir) == False:
             self.NIdir_input.clear()
 
+    ### Sample Molecular Weight input
+
+        SampleMWLabel = QtWidgets.QLabel("Sample M.W.")
+        self.SampleMW_input = QtWidgets.QLineEdit()
+        self.SampleMW_input.setText("150.0")
+        Kda = QtWidgets.QLabel("Kda")
+
         box = QtWidgets.QHBoxLayout()
         box.addWidget(NIdirLabel)
         box.addWidget(self.NIdir_input)
         box.addWidget(self.chooseNIfolder)
         box.addWidget(SampleNameLabel)
         box.addWidget(self.SampleName_input)
+
+        box.addWidget(SampleMWLabel)
+        box.addWidget(self.SampleMW_input)
+        box.addWidget(Kda)
+
+
+
 
         self.chooseNIfolder.clicked.connect(browse)  #self.chooseNIDirectory
 

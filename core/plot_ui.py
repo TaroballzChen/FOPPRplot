@@ -12,7 +12,7 @@ class plot_window():
         self.toolbar = NavigationToolbar(self.canvas, self)
 
 
-    def plot(self,conc,data,samplename,blankstdev):
+    def plot(self,conc,data,samplename,blankstdev,sampleMW):
         self.figure.clear()
 
         ax = self.figure.add_subplot(111)
@@ -38,9 +38,9 @@ class plot_window():
             # get data stats
             slope, intercept, r_value, Rsquare = self.get_stats(logconc,data)
             # get LOD
-            LOD_for_mM, LOD_for_gmL = self.get_LOD(blankstdev,slope,intercept)
+            LOD_for_mM, LOD_for_gmL = self.get_LOD(blankstdev,slope,intercept,sampleMW)
             # table in fig
-            self.table(equation,samplename,intercept,slope,r_value,Rsquare,LOD_for_mM,LOD_for_gmL)
+            self.table(equation,samplename,intercept,slope,r_value,Rsquare,LOD_for_mM,LOD_for_gmL,sampleMW)
 
         self.canvas.draw()
         return logconc
@@ -51,7 +51,7 @@ class plot_window():
 
         y_hat = p(conc)
         plt.plot(conc,y_hat,"r",linewidth=.8)
-        equation = "y = %.3fx + ( %.3f )"%(z[0],z[1])
+        equation = "y = %.4fx + ( %.4f )"%(z[0],z[1])
 
         return equation
 
@@ -61,19 +61,19 @@ class plot_window():
 
         return slope,intercept,r_value,r_value**2
 
-    def get_LOD(self,blankstdev,slope,intercept):
+    def get_LOD(self,blankstdev,slope,intercept,sampleMW):
         index = ((3*blankstdev) - intercept) / slope
-        LOD_for_M  = (10 ** index) / 150   # IgG Molecular Weight
+        LOD_for_M  = (10 ** index) / sampleMW
         LOD_for_gmL = 10 ** index
         return LOD_for_M,LOD_for_gmL
 
 
-    def table(self,equation,plot_sample,intercept,slope,Pearsons_r,r_square_value,LOD_for_M,LOD_for_gmL):
+    def table(self,equation,plot_sample,intercept,slope,Pearsons_r,r_square_value,LOD_for_M,LOD_for_gmL,sampleMW):
         # col_labels = ['']
-        row_labels = ['Equation','Plot','Intercept','Slope',"Pearson's r","R-square","LOD(mM)","LOD(g/mL)"]
+        row_labels = ['Equation','Plot','Intercept','Slope',"Pearson's r","R-square","sample M.W.","LOD(M)","LOD(g/mL)"]
         table_vals = [[equation],[plot_sample],
-                      ["%.4f"%intercept],["%.4f"%slope],["%.4f"%Pearsons_r],["%.4f"%r_square_value],
-                      ["%.3E (mM)"%LOD_for_M],["%.3E (g/mL)"%LOD_for_gmL],]
+                      ["%.4f"%intercept],["%.4f"%slope],["%.4f"%Pearsons_r],["%.4f"%r_square_value],["%.2f Kda"%sampleMW],
+                      ["%.3E (M)"%LOD_for_M],["%.3E (g/mL)"%LOD_for_gmL],]
         fig_table = plt.table(cellText = table_vals,colWidths = [0.2]*1,
                               rowLabels = row_labels, colLabels = None,
                               loc='lower right')

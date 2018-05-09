@@ -28,7 +28,10 @@ class Main(window_op):
 
     def RecordTime_WriteData(self):
         super(Main, self).RecordTime_WriteData()
+
         if self.Blank_button.isEnabled():
+            return
+        if self.SampleMW == None or self.SampleMW <= 0.0:
             return
         sampleMean, Time, _ = self.makeMeanList_and_getTime()
         self.WriteDatathread = threading.Thread(target=self.io.write_conc_with_x_point,
@@ -40,7 +43,7 @@ class Main(window_op):
         self.NormalizeData.append(y_point)
 
         # plot
-        logconc = self.plot(self.Conclist,self.NormalizeData,self.SampleName_input.text(),self.blank_stdev)
+        logconc = self.plot(self.Conclist,self.NormalizeData,self.SampleName_input.text(),self.blank_stdev,self.SampleMW)
         self.io.plotDataWrite(self.NIDATA,logconc,self.NormalizeData)
         self.WriteDatathread.join()
 
