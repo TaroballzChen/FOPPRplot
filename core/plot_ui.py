@@ -26,7 +26,7 @@ class plot_window():
         data = [abs(d) for d in data]    #absolute value of data
 
         ax.scatter(logconc,data,marker='s',label=samplename,c="k")
-        ax.set(ylabel=r'normalize data (I - I$_0$ / I$_0$)',xlabel = "log [concentration (g/mL) ]")
+        ax.set(ylabel=r'$\Delta$ I / I$_0$',xlabel = "log [concentration (g/mL) ]")
         ax.set_ylim(auto=True)
         ax.set_xlim(auto=True)
 
