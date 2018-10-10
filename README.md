@@ -15,7 +15,9 @@ pip install -r requirement.txt
 
 ![view](https://i.imgur.com/lFvg9yG.png)
 
-![movie](https://youtu.be/tBTep86xzbQ)
+# Tutorial
+
+[![Alt text for your video](https://i.ytimg.com/vi/tBTep86xzbQ/3.jpg)](https://youtu.be/tBTep86xzbQ)
 
 
 # pyinstaller 
