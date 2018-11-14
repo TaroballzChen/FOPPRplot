@@ -19,5 +19,5 @@ class IO():
     def plotDataWrite(self,FileName,xvalue,yvalue):
         PlotDataName = FileName.replace(".lvm",'_plotdata.txt')
         with open(PlotDataName,'a') as p:
-            p.write('\t'.join([str(xvalue[-1]), str(yvalue[-1]), '\n']))
+            p.write('\t'.join([str(xvalue[-1]), str(abs(yvalue[-1])), '\n']))
         return
