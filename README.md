@@ -15,6 +15,11 @@ pip install -r requirement.txt
 
 ![view](https://i.imgur.com/lFvg9yG.png)
 
+# Tutorial
+
+[![Alt text for your video](https://i9.ytimg.com/vi/tBTep86xzbQ/mq3.jpg?sqp=CJSc-N0F&rs=AOn4CLB5m2PAIjAqry73U8PeGQrIFbF-3Q)](https://youtu.be/tBTep86xzbQ)
+
+
 # pyinstaller 
 Maybe you want to execute FOPPRplot program with only one execution file. You can use pyinstaller to pack all of .py file by the command as follow:
 ```command
@@ -32,3 +37,4 @@ pyinstaller main.py --paths=C:\...\FOPPRplot\module --paths=C:\...\FOPPRplot\cor
 
 * 2018.5.9 Add new function of input Sample M.W. and caculating LOD(M) by Sample M.W. that you gave
 * 2018.5.16 modify the name of y label
+
