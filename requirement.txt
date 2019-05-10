@@ -1,5 +1,5 @@
 pyQt5==5.10.1
 numpy
 scipy
-pandas
+pandas=0.22
 matplotlib
